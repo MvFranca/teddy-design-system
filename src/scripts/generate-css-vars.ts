@@ -1,10 +1,8 @@
-// src/scripts/generate-css-vars.ts
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { colors, radii } from "../themes/tokens";
 
-// Criar __dirname no contexto ESM
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
