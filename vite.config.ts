@@ -1,23 +1,22 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import federation from "@originjs/vite-plugin-federation";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  plugins: [
-    react(),
-    federation({
-      name: "design_system",
-      filename: "remoteEntry.js",
-      exposes: {
-        './theme': './src/themes/index.ts',
-        './ThemeProvider': './src/hooks/ThemeProvider.tsx',
-      },
-      shared: ["react", "react-dom"],
-    }),
-  ],
+  plugins: [react()],
   build: {
-    target: "esnext",
-    minify: false,
-    cssCodeSplit: true,
-  },
+    lib: {
+      entry: 'src/index.ts',
+      name: 'DesignSystem',
+      fileName: (format) => `design-system.${format}.js`
+    },
+    rollupOptions: {
+      external: ['react', 'react-dom'],
+      output: {
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM'
+        }
+      }
+    }
+  }
 });
