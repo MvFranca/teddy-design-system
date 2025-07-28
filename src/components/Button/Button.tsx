@@ -1,21 +1,52 @@
-import { forwardRef } from "react";
-import type { ButtonHTMLAttributes } from "react";
+import React from "react";
+import clsx from "clsx";
+import { colors, typography } from "../../themes/tokens";
 
-type ButtonProps = {
-  variant?: "solid" | "outline" | "ghost";
-  size?: "sm" | "md" | "lg";
-  loading?: boolean;
+type ButtonVariant = "solid" | "outline";
+type ButtonSize = "sm" | "md" | "lg";
+
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: ButtonVariant;
+  size?: ButtonSize;
   fullWidth?: boolean;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+}
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ children, ...props }, ref) => {
-    return (
-      <button ref={ref} {...props}>
-        {children}
-      </button>
-    );
-  }
-);
+const sizeClasses: Record<ButtonSize, string> = {
+  sm: "h-[40px] px-4 text-sm sm:text-base",
+  md: "h-[50px] px-6 text-base sm:text-lg",
+  lg: "h-[60px] px-8 text-xl sm:text-2xl",
+};
 
-Button.displayName = "Button";
+
+export const Button = ({
+  children,
+  variant = "solid",
+  size = "md",
+  fullWidth = false,
+  className,
+  ...props
+}: ButtonProps) => {
+  const isOutline = variant === "outline";
+
+  return (
+    <button
+      {...props}
+      className={clsx(
+        "rounded-[4px] font-medium border-2",
+        sizeClasses[size],
+        fullWidth ? "w-full" : "w-fit",
+        className
+      )}
+      style={{
+        backgroundColor: isOutline ? "transparent" : colors.primaryMain,
+        color: isOutline ? colors.primaryMain : colors.primaryContrast,
+        fontWeight: typography.fontWeightBold,
+        borderColor: colors.primaryMain,
+        borderRadius: '4px',
+        opacity: props.disabled ? colors.disabledOpacity : 1,
+      }}
+    >
+      {children}
+    </button>
+  );
+};
