@@ -9,9 +9,9 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 const sizeClasses: Record<InputSize, string> = {
-  sm: "h-[40px] text-sm",
-  md: "h-[50px] text-base",
-  lg: "h-[60px] text-2xl",
+  sm: "h-[40px] text-sm sm:text-base",
+  md: "h-[50px] text-base sm:text-lg",
+  lg: "h-[60px] text-xl sm:text-2xl",
 };
 
 export const Input = ({
@@ -24,18 +24,18 @@ export const Input = ({
     <input
       {...props}
       className={clsx(
-        "rounded-[4px] px-4 border-[2px] outline-none",
+        "rounded px-4 border-2 outline-none",
         sizeClasses[size],
-        fullWidth ? "w-full" : "",
+        fullWidth ? "w-full" : "w-fit",
         className
       )}
       style={{
-        borderColor: colors.borderDefault,
-        borderWidth: '0.125rem',
-        borderRadius: '0.25rem',
         backgroundColor: colors.primaryContrast,
         color: colors.textPrimary,
-        padding: "16px 20px"
+        borderColor: colors.borderDefault,
+        opacity: props.disabled ? colors.disabledOpacity : 1,
+        borderWidth: "0.125rem",
+        borderRadius: "0.25rem",
       }}
     />
   );

@@ -12,10 +12,11 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: "h-[40px] text-sm px-4",
-  md: "h-[50px] text-base px-6",
-  lg: "h-[60px] text-2xl px-8",
+  sm: "h-[40px] px-4 text-sm sm:text-base",
+  md: "h-[50px] px-6 text-base sm:text-lg",
+  lg: "h-[60px] px-8 text-xl sm:text-2xl",
 };
+
 
 export const Button = ({
   children,
