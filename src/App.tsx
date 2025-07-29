@@ -1,5 +1,6 @@
 import { Button } from "./components/button/Button";
 import { Input } from "./components/input/Input";
+import { ClientCard } from "./components/card-client/Card";
 import { colors, typography } from "./themes/tokens";
 
 export function App() {
