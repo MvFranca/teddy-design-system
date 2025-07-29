@@ -6,5 +6,5 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     size?: ButtonSize;
     fullWidth?: boolean;
 }
-export declare const Button: ({ children, variant, size, fullWidth, className, ...props }: ButtonProps) => import("react/jsx-runtime").JSX.Element;
+export declare const Button: ({ children, variant, size, fullWidth, className, disabled, ...props }: ButtonProps) => import("react/jsx-runtime").JSX.Element;
 export {};

@@ -1,6 +1,7 @@
 import { Button } from "./components/button/Button";
 import { Input } from "./components/input/Input";
 import { ClientCard } from "./components/card-client/Card";
+import {  } from "./components/modal/Modal";
 import { colors, typography } from "./themes/tokens";
 
 export function App() {
@@ -52,6 +53,8 @@ export function App() {
           Começar
         </Button>
       </div>
+
+
 
       <span
         style={{
