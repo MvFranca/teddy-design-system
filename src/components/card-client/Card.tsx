@@ -28,8 +28,20 @@ export function ClientCard({
       <div className="flex flex-col justify-center items-center gap-[15px] relative">
         <div className="text-center flex flex-col items-center">
           <h3 className="font-semibold text-black text-[16px]">{name}</h3>
-          <p className="text-sm text-black mt-[10px]">Salário: R${salary}</p>
-          <p className="text-sm text-black">Empresa: R${company}</p>
+          <p className="text-sm text-black mt-[10px]">
+            Salário: R$
+            {salary.toLocaleString("pt-BR", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
+          </p>
+          <p className="text-sm text-black">
+            Empresa: R$
+            {company.toLocaleString("pt-BR", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
+          </p>
         </div>
       </div>
 
@@ -49,9 +61,9 @@ export function ClientCard({
             <img
               src={Edit}
               alt="Editar"
-              className="h-4 w-4"
-              width={25}
-              height={25}
+              className="h-[20px] w-[20px]"
+              width={20}
+              height={20}
             />
           </button>
 
@@ -62,7 +74,7 @@ export function ClientCard({
             <img
               src={Bin}
               alt="Excluir"
-              className="h-4 w-4"
+              className="h-[20px] w-[20px]"
               width={20}
               height={20}
             />
