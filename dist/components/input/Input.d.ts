@@ -1,8 +1,8 @@
 import React from "react";
 type InputSize = "sm" | "md" | "lg";
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-    inputSize?: InputSize;
+interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> {
+    size?: InputSize;
     fullWidth?: boolean;
 }
-export declare const Input: ({ inputSize, fullWidth, className, ...props }: InputProps) => import("react/jsx-runtime").JSX.Element;
+export declare const Input: ({ size, fullWidth, className, ...props }: InputProps) => import("react/jsx-runtime").JSX.Element;
 export {};
